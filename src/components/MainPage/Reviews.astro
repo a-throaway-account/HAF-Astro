@@ -1,0 +1,117 @@
+<section class="reviews-section">
+    
+    <div class="reviews-wrapper">
+        <div class="reviews-track" id="reviewsTrack">
+            <article class="review-card">
+                <div class="card-content">
+                    <img src="/logos/clients/vipin-xneeti.jpeg" alt="Profile" class="review-avatar">
+                    <hr class="review-divider">
+                    <p class="review-text">"They completely transformed our online presence. The ROI was immediate and substantial."</p>
+                    <h2 class="review-name">Vipin Parihar</h2>
+                    <p class="review-designation">Head of Marketing, Xneeti OneOS</p>
+                </div>
+            </article>
+
+            <article class="review-card">
+                <div class="card-content">
+                    <p class="review-text">"Minimalist, effective, and straight to the point. Exactly what we needed for our brand launch."</p>
+                    <hr class="review-divider">
+                    <img src="/logos/clients/vaishali-nidhi.jpg" alt="Profile" class="review-avatar">
+                    <h2 class="review-name">Vaishali Patil</h2>
+                    <p class="review-designation">Founder, Nidhii Skincare</p>
+                </div>
+            </article>
+
+            <article class="review-card">
+                <div class="card-content">
+                    <img src="/logos/clients/vijay-baked.png" alt="Profile" class="review-avatar">
+                    <hr class="review-divider">
+                    <p class="review-text">"The team understood our vision perfectly. The communication was seamless throughout."</p>
+                    <h2 class="review-name">Vijay Chhabra</h2>
+                    <p class="review-designation">Founder, Baked Beauty</p>
+                </div>
+            </article>
+
+            <article class="review-card">
+                <div class="card-content">
+                    <p class="review-text">"Incredible attention to detail. The new website is converting at 3x our previous rate."</p>
+                    <hr class="review-divider">
+                    <img src="/logos/client-logos/monik.avif" alt="Profile" class="review-avatar">
+                    <h2 class="review-name">Kritikaa Chhabra</h2>
+                    <p class="review-designation">Founder, Label Moni K</p>
+                </div>
+            </article>
+            <article class="review-card">
+                <div class="card-content">
+                    <p class="review-text">"Incredible attention to detail. The new website is converting at 3x our previous rate."</p>
+                    <hr class="review-divider">
+                    <img src="/logos/clients/shashank-lunaer.jpeg" alt="Profile" class="review-avatar">
+                    <h2 class="review-name">Shashank Jain </h2>
+                    <p class="review-designation">Founder, Lunaer World</p>
+                </div>
+            </article>
+        <article class="review-card">
+                <div class="card-content">
+                    <p class="review-text">"Incredible attention to detail. The new website is converting at 3x our previous rate."</p>
+                    <hr class="review-divider">
+                    <img src="/logos/clients/harsh-inkarto.jpeg" alt="Profile" class="review-avatar">
+                    <h2 class="review-name">Harsh Shah</h2>
+                    <p class="review-designation">Founder, Inkarto</p>
+                </div>
+            </article>
+        
+        </div>
+
+
+        <div class="reviews-controls">
+            <button class="review-nav prev-btn" aria-label="Previous Review">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="review-nav next-btn" aria-label="Next Review">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+        </div>
+    </div>
+</section>
+<script>document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('reviewsTrack');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    // 1. SCROLL LOGIC
+    if (track && prevBtn && nextBtn) {
+        const scrollAmount = 430; // Card width + gap
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+    }
+
+    // 2. 3D TILT LOGIC
+    const cards = document.querySelectorAll('.review-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate rotation values
+            const rotateX = ((y - centerY) / centerY) * -5; // Max 15 degree tilt
+            const rotateY = ((x - centerX) / centerX) * 5;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
+});</script>

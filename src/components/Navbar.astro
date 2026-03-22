@@ -1,0 +1,45 @@
+<div class="progress-container">
+    <div class="progress-bar" id="scrollBar"></div>
+</div>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">
+            <img src="/logos/hustleTitle.png" alt="HustleandFlow" id="navLogo">
+        </a> <button class="menu-burger"  id="menuToggle" aria-label="Toggle Menu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/about">About Us</a>
+  <a href="/services">Services</a>
+  <a href="/blogs"> Blogs</a>
+  <a href="/#contact-us">Contact Us</a>
+  
+</div>
+
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
+  const nav = document.querySelector(".main-nav");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+  }
+  window.addEventListener("scroll", () => {
+        if (nav) {
+            window.scrollY > 20 ? nav.classList.add("scrolled") : nav.classList.remove("scrolled");
+        }
+        const scrollBar = document.getElementById("scrollBar");
+        if (scrollBar) {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollBar.style.width = scrolled + "%";
+        }
+    });
+</script>

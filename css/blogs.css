@@ -1,0 +1,64 @@
+.blogs-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* This acts as the "window" */
+  border-top: 1px solid #ed991b;
+  border-bottom: 1px solid #ed991b;
+  padding: 18px 0;
+  margin-bottom: 60px;
+
+  /* The stationary fade effect */
+  -webkit-mask-image: linear-gradient(to right, 
+    transparent, 
+    black 15%, 
+    black 85%, 
+    transparent
+  );
+  mask-image: linear-gradient(to right, 
+    transparent, 
+    black 15%, 
+    black 85%, 
+    transparent
+  );
+}
+
+.blog-link {
+    display: inline-block; /* Essential for transform to work */
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--brand-orange);
+    font-weight: bold;
+}
+
+.blog-link:hover {
+    /* This will move the text 8 pixels to the right on hover */
+    transform: translateX(8px); 
+    color: var(--brand-cream);
+}
+
+.marquee-track {
+  display: flex;
+  flex-direction: row; /* Force horizontal */
+  flex-wrap: nowrap;   /* Prevent the column look */
+  width: max-content;  /* Essential: lets the track be wider than the screen */
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-track span {
+  flex-shrink: 0;      /* Prevents text from squishing */
+  padding: 0 20px;     /* Space between your items */
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #e2ddb4;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* pause on hover */
+.blogs-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}

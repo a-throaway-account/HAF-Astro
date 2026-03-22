@@ -1,0 +1,72 @@
+<section class="launch-section">
+  <div class="launch-left">
+    <span class="badge">LAUNCHED</span>
+    <h1>THIS MONTH</h1>
+    <p>New products for Lunaer World & Nidhii Skincare.</p>
+  </div>
+
+  <div class="image-grid">
+  <div class="tile"><div class="tile-inner"></div></div>
+  <div class="tile"><div class="tile-inner"></div></div>
+  <div class="tile"><div class="tile-inner"></div></div>
+  <div class="tile"><div class="tile-inner"></div></div>
+</div>
+</section>
+<script>
+const images = [
+  "logos/launch-section/Lunaer1.jpeg",
+  "logos/launch-section/Lunaer2.jpeg",
+  "logos/launch-section/Lunaer3.jpeg",
+  "logos/launch-section/Lunaer4.jpeg",
+  "logos/launch-section/Nidhi1.jpeg",
+  "logos/launch-section/Nidhi2.jpeg",
+  "logos/launch-section/Nidhi3.jpeg",
+];
+
+const tiles = document.querySelectorAll(".tile");
+
+let currentImage = 0;
+let nextImage = 1;
+
+const order = [0, 1, 2, 3]; // TL → TR → BL → BR
+
+function applyImage(imgIndex) {
+  tiles.forEach((tile, i) => {
+    const inner = tile.querySelector(".tile-inner");
+
+    const col = i % 2;                 // 0 or 1
+    const row = Math.floor(i / 2);     // 0 or 1
+
+    inner.style.backgroundImage = `url(${images[imgIndex]})`;
+
+    inner.style.backgroundPosition = `
+      ${col === 0 ? "0%" : "100%"}
+      ${row === 0 ? "0%" : "100%"}
+    `;
+  });
+}
+
+
+applyImage(currentImage);
+
+function animateSwap() {
+  let step = 0;
+
+  const interval = setInterval(() => {
+    const tile = tiles[order[step]];
+    tile.querySelector(".tile-inner").style.backgroundImage =  `url(${images[nextImage]})`;
+
+    
+
+    step++;
+
+    if (step === 4) {
+      clearInterval(interval);
+      currentImage = nextImage;
+      nextImage = (nextImage + 1) % images.length;
+    }
+  }, 350);
+}
+
+setInterval(animateSwap, 3000);
+</script>

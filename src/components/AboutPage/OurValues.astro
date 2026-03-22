@@ -1,0 +1,45 @@
+<section class="values">
+
+<h2 class="section-title">What We Stand For</h2>
+
+<div class="value-row reveal">
+<div class="value-num">01</div>
+<div class="value-text">
+<h4>Truth over Trends</h4>
+<p>No buzzwords. Only what moves revenue.</p>
+</div>
+</div>
+
+<div class="value-row reveal">
+<div class="value-num">02</div>
+<div class="value-text">
+<h4>Craft over Comfort</h4>
+<p>We’d rather be uncomfortable than average.</p>
+</div>
+</div>
+
+<div class="value-row reveal">
+<div class="value-num">03</div>
+<div class="value-text">
+<h4>Long Games Win</h4>
+<p>Brands are built in years, not campaigns.</p>
+</div>
+</div>
+
+</section>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function onScroll(){
+  const trigger = window.innerHeight * .88;
+
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < trigger) el.classList.add("visible");
+  });
+}
+
+window.addEventListener("scroll", onScroll);
+onScroll();
+</script>

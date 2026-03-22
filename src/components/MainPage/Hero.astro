@@ -1,0 +1,128 @@
+<section class="focal-hero">
+    <div class="hero-noise-overlay"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-main-title">
+                <span class="hero-eyebrow">We help you generate</span>
+                <span class="revenue-highlight">
+                    M<span class="spinning-o-container">
+                        <span class="o-border">O</span>
+                        <div class="circular-text-wrap">
+                            <span style="--i:0">M</span><span style="--i:1">O</span>
+                            <span style="--i:2">R</span><span style="--i:3">E</span>
+                            <span style="--i:4">*</span><span style="--i:5">R</span>
+                            <span style="--i:6">E</span><span style="--i:7">V</span>
+                            <span style="--i:8">E</span><span style="--i:9">N</span>
+                            <span style="--i:10">U</span><span style="--i:11">E</span>
+                            <span style="--i:12">*</span>
+                        </div>
+                    </span>RE REVENUE
+                </span>
+            </h1>
+            <p class="hero-sub-text">
+                <span class="hero-quote shiny">
+                    Ignite Your <span class="text-accent-red">Hustle</span>, 
+                    Find Your <span class="text-outline">Flow</span>
+                </span>
+                <span class="hero-description">
+                    We combine efficient growth strategies with seamless execution to scale your brand from local hustle to global flow.
+                </span>
+            </p>
+            <div class="hero-cta-group">
+                <a href="#contact-us" class="btn-primary-large" id="bookMeetingBtn">Book a Meeting</a>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const init = () => {
+    const btn = document.getElementById("bookMeetingBtn");
+    if (!btn) return;
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      
+      // OPTION A: Try the Popup again with a cleaner check
+      const calendly = (window as any).Calendly;
+      if (calendly) {
+        calendly.initPopupWidget({
+          url: "https://calendly.com/kashyap-sawanjha?primary_color=dc3232&text_color=000000&background_color=#e2ddb4"
+        });
+      } 
+      // OPTION B: The fail-safe workaround
+      else {
+        console.log("Calendly SDK blocked/not found. Falling back to new tab.");
+        window.open("https://calendly.com/kashyap-sawanjha?primary_color=dc3232&text_color=000000&background_color=#e2ddb4", "_blank", "noopener,noreferrer");
+      }
+    });
+
+    // Your GSAP Animations
+    gsap.from(".hero-content > *", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".hero-content",
+        start: "top 90%"
+      }
+    });
+  };
+
+  init();
+</script>
+          <script is:inline src="https://assets.calendly.com/assets/external/widget.js" defer></script>
+
+
+<!--
+<script>
+  import gsap from "gsap";
+
+  const modal = document.getElementById("calendlyModal");
+  const openBtn = document.getElementById("bookMeetingBtn");
+  const closeBtn = document.getElementById("closeModal");
+
+  if (openBtn && modal && closeBtn) {
+    // OPEN MODAL
+    openBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.style.display = "flex";
+      gsap.to(modal, { opacity: 1, duration: 0.3 });
+      document.body.style.overflow = "hidden"; // Lock scroll
+    });
+
+    // CLOSE MODAL
+    const closeModal = () => {
+      gsap.to(modal, { 
+        opacity: 0, 
+        duration: 0.3, 
+        onComplete: () => {
+          modal.style.display = "none";
+          document.body.style.overflow = ""; // Unlock scroll
+        } 
+      });
+    };
+
+    closeBtn.addEventListener("click", closeModal);
+    
+    // Close on click outside content
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  // --- Keep your GSAP entrance animations below this ---
+  gsap.from(".hero-content > *", {
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power2.out"
+  });
+</script> -->
+          <script is:inline src="https://assets.calendly.com/assets/external/widget.js" defer></script>

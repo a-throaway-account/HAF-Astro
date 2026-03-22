@@ -1,0 +1,322 @@
+/* =========================================
+   BLOG HERO
+========================================= */
+/* NUCLEAR RESET – KILLS ALL GUTTERS */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  background: var(--bg-light) !important;
+}
+.blog-hero {
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+/* BIG TITLE */
+.blog-mega {
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.02;
+  margin-bottom: 22px;
+  color: #000;
+}
+
+.blog-mega .accent {
+  color: #E43636;
+}
+
+/* =========================================
+   MARQUEE (TAGS)
+========================================= */
+
+.blog-marquee {
+  overflow: hidden;
+  position: relative;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+.blog-section {
+    padding: 100px 0;
+    background-color: #fff; /* RED BACKGROUND */
+    width: 100%;
+    overflow: hidden;
+}
+.blog-marquee-track {
+  display: flex;
+  gap: 18px;
+
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+
+  white-space: nowrap;
+
+  animation: blogScroll 32s linear infinite;
+}
+
+.blog-marquee-track span {
+  color: #333;
+  cursor: pointer;
+  transition: color .25s ease, opacity .25s ease;
+}
+
+.blog-marquee-track span:hover {
+  color: #E43636;
+}
+
+.blog-marquee-track span.active {
+  color: #E43636;
+}
+
+.blog-marquee-track span.dim {
+  opacity: .25;
+}
+
+@keyframes blogScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.blog-marquee:hover .blog-marquee-track {
+  animation-play-state: paused;
+}
+
+/* =========================================
+   CARDS GRID
+========================================= */
+
+.blog-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 24px 80px;
+}
+
+.blog-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  width: 100%;
+}
+
+/* =========================================
+   CARD STYLE
+========================================= */
+
+.blog-card {
+    flex: 0 0 400px;
+    scroll-snap-align: center;
+    border: 1px solid #f6c8a4;
+    min-height: 400px;
+    background-color: #e2ddb4; /* EARTHY GOLD CARD */
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+
+  animation: cardFloat 6s ease-in-out infinite;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    opacity .3s ease;
+}
+.card-content {
+    pointer-events: none;
+    border-radius: 12px;
+    transform: translateZ(20px);
+    color: #000000; /* Keeping text black as requested */
+     text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: inherit; /* Keeps your title black and excerpt grey */
+
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+@keyframes cardFloat {
+  0%   { transform: translateX(0px); }
+  25%  { transform: translateX(4px); }
+  50%  { transform: translateX(-4px); }
+  75%  { transform: translateX(2px); }
+  100% { transform: translateX(0px); }
+}
+
+/* FILTER STATE */
+.blog-card.hidden {
+  opacity: .12;
+  pointer-events: none;
+  filter: grayscale(1);
+  transform: scale(.96);
+}
+
+/* CARD INNER */
+
+
+.blog-category {
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #E43636;
+}
+
+.blog-title {
+  font-size: 1.3rem;
+  margin: 10px 0;
+}
+
+.blog-excerpt {
+  font-size: .95rem;
+  opacity: .8;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 640px) {
+  .blog-wrapper {
+    padding: 20px 16px 60px;
+  }
+
+  .blog-cards {
+    grid-template-columns: 1fr;
+  }
+}
+.svc-cta {
+  padding: 140px 24px;
+  background:
+    radial-gradient(1200px at 10% 10%, rgba(228,54,54,.08), transparent 60%),
+    #fafafa;
+
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* BIG TITLE */
+.mega-title {
+  font-size: clamp(3.2rem, 6vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.02;
+  margin-bottom: 26px;
+}
+
+/* TYPE EFFECT */
+.type-text {
+  color: #E43636;
+  border-right: 3px solid #E43636;
+  padding-right: 6px;
+  animation: blink .8s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* QUOTE */
+.cta-quote {
+  font-size: 1.25rem;
+  color: #444;
+  max-width: 640px;
+  margin: 0 auto 34px;
+
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* BUTTON */
+.cta-btn {
+  font-size: 1.05rem;
+  padding: 20px 44px;
+}
+
+.cta-note {
+  margin-top: 12px;
+  font-size: .9rem;
+  opacity: .7;
+}
+
+/* ---- Calendly modal (reuse yours) ---- */
+.calendly-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all .35s ease;
+  z-index: 999999;
+}
+
+.calendly-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.calendly-box {
+  width: 94%;
+  max-width: 900px;
+  height: 86vh;
+
+  background: #fff;
+  border-radius: 18px;
+  position: relative;
+
+  transform: translateY(20px);
+  transition: transform .35s ease;
+}
+
+.calendly-modal.open .calendly-box {
+  transform: translateY(0);
+}
+
+.calendly-box iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+}
+
+.close-calendly {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  background: #E43636;
+  color: #fff;
+
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}

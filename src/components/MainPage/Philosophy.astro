@@ -1,0 +1,60 @@
+<section class="philosophy-section">
+  <div class="philosophy-header">
+    <h2 class="section-title">
+      Our <span class="text-highlight">Philosophy</span>
+    </h2>
+  </div>
+
+  <div class="philosophy-container">
+    <div class="flip-card" id="philosophyCard">
+      <div class="flip-inner">
+        <div class="flip-face front">
+          <h2>
+            We don't just manage accounts.<br>
+            <span class="gradient-text">We take ownership.</span>
+          </h2>
+          <p>Most agencies act as external vendors. We operate as an extension of your internal team.</p>
+          <p>When we’re on board, your KPIs become our obsession.</p>
+        </div>
+
+        <div class="flip-face back">
+          <div class="back-overlay"></div>
+          <div class="back-content">
+            <h2>Our Commitment</h2>
+            <p>We scale brands from local hustle to global flow using data-driven execution.</p>
+            <ul class="back-list">
+              <li>Full Account Audit</li>
+              <li>Growth Strategy</li>
+              <li>Weekly Optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="static-image-card">
+      <img src="https://picsum.photos/id/20/800/1000" alt="Strategy" />
+    </div>
+  </div>
+
+  <div class="flip-cta">
+    <button id="flipBtn" class="btn-primary-large">Know More</button>
+  </div>
+</section>
+<script>
+  const flipBtn = document.getElementById('flipBtn');
+  const card = document.getElementById('philosophyCard');
+
+  if (flipBtn && card) {
+    flipBtn.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+      
+      // Toggle button text
+      if (card.classList.contains('flipped')) {
+        flipBtn.textContent = 'Go Back';
+      } else {
+        flipBtn.textContent = 'Know More';
+      }
+    });
+  }
+</script>

@@ -1,0 +1,270 @@
+/* =========================================================
+   SERVICES SECTION
+========================================================= */
+
+body {
+    overflow-x: hidden;
+}
+
+.services-section {
+    background: #ffffff;
+    padding: clamp(40px, 7vw, 80px) 0;
+}
+
+/* ---------------------------------------------------------
+   HEADER
+--------------------------------------------------------- */
+
+.services-header {
+    margin-bottom: 50px;
+}
+
+.label-accent {
+    color: #E43636;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}
+
+.section-title {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #000;
+}
+
+.text-highlight-htt {
+    color: #E43636;
+}
+
+/* =========================================================
+   SLIDER WRAPPER
+========================================================= */
+
+.services-slider {
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.services-track {
+    display: flex;
+    gap: 32px;
+    transform: translateX(0);
+    transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+
+    will-change: transform;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.service-card {
+    flex: 0 0 clamp(280px, 28vw, 360px);
+    text-align: center;
+
+    background: #fff;
+    border: 1px solid #E2DDB4;
+
+    padding: clamp(32px, 4vw, 48px)
+             clamp(28px, 3vw, 42px);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    border-color: #E43636;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   ICON ROW
+========================================================= */
+
+.service-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 22px;
+}
+
+.service-icon {
+    font-size: clamp(2.4rem, 3vw, 3rem);
+    margin-bottom: 3px;
+    font-weight: 900;
+    line-height: 1;
+    color: #000;
+}
+
+.service-gif {
+    width: clamp(46px, 5vw, 64px);
+    height: clamp(46px, 5vw, 64px);
+    object-fit: contain;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.service-card h5 {
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.service-card p {
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    font-size: clamp(0.95rem, 1.2vw, 1rem);
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.text-link {
+    margin-top: auto;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #E43636;
+    text-decoration: none;
+}
+
+.text-link::after {
+    content: " →";
+}
+
+/* =========================================================
+   GRADIENT MASKS
+========================================================= */
+
+.services-slider::before,
+.services-slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.services-slider::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        #ffffff 0%,
+        rgba(255,255,255,0.8) 35%,
+        transparent 100%
+    );
+}
+
+.services-slider::after {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        #ffffff 0%,
+        rgba(255,255,255,0.8) 35%,
+        transparent 100%
+    );
+}
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #E2DDB4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    opacity: 0;
+
+    transition: all 0.25s ease;
+}
+
+.slider-arrow.prev { left: 20px; }
+.slider-arrow.next { right: 20px; }
+
+.slider-arrow:hover {
+    background: #E43636;
+    color: #fff;
+    border-color: #E43636;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.services-slider:hover .slider-arrow {
+    opacity: 1;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .services-track {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+    }
+
+    .service-card {
+        scroll-snap-align: start;
+    }
+
+    .slider-arrow {
+        display: none;
+    }
+}
+@media (max-width: 900px) {
+
+  .services-slider {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .services-track {
+    display: flex;
+    gap: 20px;
+    min-width: max-content;
+    scroll-snap-type: x mandatory;
+  }
+
+  .service-card {
+    scroll-snap-align: center;
+  }
+
+  .slider-arrow {
+    display: none;
+  }
+}
