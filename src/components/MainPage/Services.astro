@@ -164,3 +164,22 @@
 
   </div>
 </section>
+
+
+<style>
+  .services-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .services-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  .service-card {
+    min-width: 300px; /* Adjust based on your design */
+    flex-shrink: 0;
+  }
+</style>
