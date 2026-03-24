@@ -1,10 +1,14 @@
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
 <div class="progress-container">
     <div class="progress-bar" id="scrollBar"></div>
 </div>
 <nav class="main-nav">
     <div class="nav-container">
         <a href="/" class="nav-logo">
-            <img src="/logos/hustleTitle.png" alt="HustleandFlow" id="navLogo">
+            <img src={`${baseUrl}/logos/hustleTitle.png`} alt="HustleandFlow" id="navLogo">
         </a> <button class="menu-burger"  id="menuToggle" aria-label="Toggle Menu">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
@@ -13,10 +17,10 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="/">Home</a>
-  <a href="/about">About Us</a>
-  <a href="/services">Services</a>
-  <a href="/blogs"> Blogs</a>
-  <a href="/#contact-us">Contact Us</a>
+  <a href={`${baseUrl}/about`}>About Us</a>
+  <a href={`${baseUrl}/services`}>Services</a>
+  <a href={`${baseUrl}/blogs`}> Blogs</a>
+  <a href={`${baseUrl}/#contact-us`}>Contact Us</a>
   
 </div>
 
