@@ -3,27 +3,7 @@
  * Consolidated & Fixed Infinite Slider
  */
 
-// --- 1. SPLASH SCREEN & SCROLL LOCK ---
-const initSplash = () => {
-    const splash = document.getElementById("splash");
-    const unlockScroll = () => {
-        document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
-    };
-
-    if (splash) {
-        document.body.style.overflow = "hidden";
-        setTimeout(() => splash.classList.add("dark"), 1000);
-        setTimeout(() => splash.style.opacity = "0", 2000);
-        setTimeout(() => {
-            splash.remove();
-            unlockScroll();
-        }, 2700);
-    } else {
-        unlockScroll();
-    }
-    setTimeout(unlockScroll, 5000);
-};
+;
 
 // --- 2. INFINITE SERVICES SLIDER LOGIC ---
 // We define these variables globally so moveServices can see them
@@ -79,42 +59,6 @@ const initServicesSlider = () => {
     };
 };
 
-// --- 3. DOM CONTENT LOADED ---
-document.addEventListener('DOMContentLoaded', () => {
-
-    initSplash();
-    initServicesSlider(); // Called inside, defined outside
-
-    // NAV & BURGER
-    const burger = document.getElementById("menuToggle");
-    const menu = document.getElementById("mobileMenu");
-    const nav = document.querySelector(".main-nav");
-
-    if (burger && menu) {
-        burger.addEventListener("click", () => {
-            burger.classList.toggle("active");
-            menu.classList.toggle("open");
-        });
-    }
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    burger.classList.remove("active");
-  });
-});
-    // SCROLLBAR & NAV CLASS
-    window.addEventListener("scroll", () => {
-        if (nav) {
-            window.scrollY > 20 ? nav.classList.add("scrolled") : nav.classList.remove("scrolled");
-        }
-        const scrollBar = document.getElementById("scrollBar");
-        if (scrollBar) {
-            const winScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            scrollBar.style.width = scrolled + "%";
-        }
-    });
 
     // REVIEWS & BLOGS (Standard Scroll)
     const setupSlider = (trackId, prevBtnClass, nextBtnClass, amount) => {
