@@ -1,9 +1,3 @@
-/**
- * Hustle & Flow - Main JS
- * Consolidated & Fixed Infinite Slider
- */
-
-;
 
 // --- 2. INFINITE SERVICES SLIDER LOGIC ---
 // We define these variables globally so moveServices can see them
