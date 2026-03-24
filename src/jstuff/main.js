@@ -1,6 +1,30 @@
+/**
+ * Hustle & Flow - Main JS
+ */
+
+// --- 1. SPLASH SCREEN & SCROLL LOCK ---
+const initSplash = () => {
+    const splash = document.getElementById("splash");
+    const unlockScroll = () => {
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+    };
+
+    if (splash) {
+        document.body.style.overflow = "hidden";
+        setTimeout(() => splash.classList.add("dark"), 1000);
+        setTimeout(() => splash.style.opacity = "0", 2000);
+        setTimeout(() => {
+            splash.remove();
+            unlockScroll();
+        }, 2700);
+    } else {
+        unlockScroll();
+    }
+    setTimeout(unlockScroll, 5000);
+};
 
 // --- 2. INFINITE SERVICES SLIDER LOGIC ---
-// We define these variables globally so moveServices can see them
 let serviceIndex = 0;
 let isMoving = false;
 
@@ -53,7 +77,8 @@ const initServicesSlider = () => {
     };
 };
 
-
+// --- 3. DOM CONTENT LOADED ---
+document.addEventListener('DOMContentLoaded', () => {
     // REVIEWS & BLOGS (Standard Scroll)
     const setupSlider = (trackId, prevBtnClass, nextBtnClass, amount) => {
         const track = document.getElementById(trackId);
@@ -85,27 +110,17 @@ const initServicesSlider = () => {
     }
     
     // PHILOSOPHY CARD
-// PHILOSOPHY CARD — SAFE BIND
-// PHILOSOPHY CARD — FINAL FIX
-(() => {
+    (() => {
+        const philBtn = document.getElementById("flipBtn");
+        const philCard = document.getElementById("philosophyCard");
 
-  const philBtn = document.getElementById("flipBtn");
-  const philCard = document.getElementById("philosophyCard");
+        if (!philBtn || !philCard) return;
 
-  console.log("Philosophy debug:", { philBtn, philCard });
+        philBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            philCard.classList.toggle("flipped");
+        });
+    })();
 
-  if (!philBtn || !philCard) return;
-
-  philBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    philCard.classList.toggle("flipped");
-
-    console.log("AFTER CLICK:", philCard.classList);
-  });
-
-})();
-
-
-});
+}); 
