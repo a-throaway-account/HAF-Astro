@@ -1,3 +1,18 @@
+---
+// 1. Astro handles these. It will automatically put them in the <head> 
+// with the correct GitHub Pages /HAF-Astro/ prefix.
+import '../css/styles.css'; 
+import '../css/focal-hero.css';
+import '../css/philosophy.css';
+import '../css/services.css';
+import '../css/blogs.css';
+import '../css/marquee.css';
+
+// 2. Keep this for your favicon and external links
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+
 <!doctype html>
 <!doctype html>
 <html lang="en">
@@ -5,13 +20,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Hustle and Flow</title>
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.ico`}/>
-    <link rel="stylesheet" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/css/styles.css`}>
-     <link rel="stylesheet" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/css/focal-hero.css`}>     
-     <link rel="stylesheet" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/css/philosophy.css`}>
-     <link rel="stylesheet" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/css/services.css`}>
-     <link rel="stylesheet" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/css/blogs.css`}>
+    <!--<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} /> -->
+    <!--<link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.ico`}/> -->
   	 <link rel="stylesheet" href= "https://calendly.com/assets/external/widget.css"
   rel="stylesheet"/>
          
