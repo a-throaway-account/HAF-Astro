@@ -1,0 +1,267 @@
+:root {
+    --brand-orange: #ed991b;
+    --brand-cream: #000;
+    --dark-bg: #0a0a0a;
+    /* Adding variables from styles.css for consistency */
+    --primary: #E43636;
+    --bg-alt: #bdbdbd;
+    --transition: all 0.3s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box; /* Prevents padding from adding to width */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scrolling/leaks */
+}
+
+p{
+    color: #000;
+}
+
+.small-gap{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.blog-container {
+    max-width: 850px;
+    margin: 0 auto; /* Removed the top margin to handle it with padding */
+    padding: 120px 20px 60px; /* 120px top padding pushes it below the nav */
+}
+
+/* Header & Title */
+.blog-header {
+    margin-bottom: 40px;
+    border-left: 5px solid var(--brand-orange);
+    padding-left: 25px;
+}
+
+.category-tag {
+    background: var(--brand-orange);
+    color: #000;
+    display: inline-block;
+    padding: 4px 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+}
+
+.tags{
+    background: #E43636;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.tags:hover{
+    transform: scale(1.02);
+}
+
+.post-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--brand-cream);
+    margin: 0;
+}
+
+.post-meta {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+/* Images */
+.featured-image {
+    margin: 40px 0;
+    border: 1px solid var(--brand-orange);
+    padding: 10px; /* Creates a "framed" effect */
+    
+}
+
+.featured-image img {
+    width: 100%;
+    display: block;
+}
+
+/* Text Content */
+.blog-content {
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--brand-cream);
+}
+
+.sub-head-1 {
+    color: var(--brand-orange);
+    text-transform: uppercase;
+    margin-top: 2em;
+}
+
+.blog-content h2 {
+    color: var(--brand-orange);
+    text-transform: uppercase;
+    margin-top: 2em;
+}
+
+/* Footer & Nav */
+.blog-footer {
+    margin-top: 60px;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.post-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.nav-btn {
+    border: 1px solid var(--brand-orange);
+    padding: 20px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-btn:hover {
+    background: var(--brand-orange);
+}
+
+.nav-btn:hover span {
+    color: #000;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 5px;
+}
+
+.nav-name {
+    font-weight: 900;
+    color: var(--brand-cream);
+}
+
+/* --- UPDATED FOOTER LAYOUT (Matches styles.css) --- */
+/* --- FOOTER FULL-WIDTH FIX --- */
+
+.main-footer {
+    width: 100%; /* Ensures the background stretches edge-to-edge */
+    background-color: var(--dark-bg);
+    padding: 80px 0 30px;
+    margin-top: 100px;
+    border-top: 1px solid var(--brand-orange);
+    color: var(--bg-alt);
+    /* Reset any inherited centering from parent containers */
+    position: relative;
+    left: 0;
+}
+
+
+.footer-container {
+    /* This makes the content center itself with a wide limit */
+    max-width: var(--container-max, 1320px); 
+    margin: 0 auto;
+    padding: 0 var(--gutter, 40px);
+    
+    /* Responsive Grid */
+    display: grid;
+    /* 4 columns on desktop: Logo(wide), Services, Links, Contact */
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr; 
+    gap: 40px;
+}
+
+
+
+/* --- RESPONSIVENESS --- */
+
+/* Tablets (Less than 1024px) */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr; /* Switch to 2x2 grid */
+        gap: 60px 40px;
+    }
+}
+
+/* Phones (Less than 600px) */
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Single column stack */
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center content for mobile */
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-links li a:hover {
+        transform: none; /* Disable horizontal slide on mobile touch */
+    }
+}
+
+/* --- REUSABLE COMPONENTS (From styles.css) --- */
+
+.footer-logo-img {
+    height: 50px;
+    width: auto;
+    margin-bottom: 25px;
+}
+
+.footer-title {
+    color: #d2d2d2;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--bg-alt);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--brand-orange);
+    transform: translateX(8px);
+}

@@ -1,0 +1,272 @@
+/* =========================================================
+   FOCAL HERO SECTION
+========================================================= */
+
+.hero-eyebrow,
+.hero-main-title,
+.hero-sub-text,
+.hero-cta-group {
+    will-change: transform, opacity;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 24px;
+}
+
+/* =========================================================
+   HERO WRAPPER
+========================================================= */
+
+.focal-hero {
+    position: relative;
+    background-color: #ffffff;
+
+    min-height: clamp(720px, 90vh, 980px);
+
+    display: flex;
+    align-items: center;
+
+    padding: clamp(80px, 8vw, 120px) 0;
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   NOISE OVERLAY
+========================================================= */
+
+.hero-noise-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    pointer-events: none;
+
+    background-image:
+      url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+
+    filter: invert(1);
+}
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.hero-eyebrow {
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.hero-main-title {
+    font-size: clamp(3rem, 9vw, 7.5rem);
+    line-height: 0.92;
+    color: #120B03;
+    font-weight: 900;
+
+    letter-spacing: -0.04em;
+    text-align: center;
+
+    margin: 0 0 28px 0;
+}
+
+/* =========================================================
+   SPINNING O
+========================================================= */
+
+.spinning-o-container {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    isolation: isolate;
+}
+
+.circular-text-wrap {
+    position: absolute;
+    inset: 0;
+    transform: translate(0, 0);
+    animation: rotate-o 20s linear infinite;
+    z-index: 2;
+}
+
+.o-border{
+    color: transparent;
+}
+
+.hero-main-title:hover .circular-text-wrap {
+    animation-duration: 5s;
+}
+
+.circular-text-wrap span {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 50%;
+    width: 20px;
+    margin-left: -10px;
+    font-size: 0.12em;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+
+    transform-origin: bottom center;
+    transform: rotate(calc(var(--i) * (360deg / 13)));
+}
+.circular-text-wrap span:last-child {
+    margin-right: 0;
+}
+
+@keyframes rotate-o {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   REVENUE LINE
+========================================================= */
+
+.revenue-highlight {
+    display: block;
+    width: 100%;
+    padding-top: 22px;
+
+    text-align: center;
+
+    font-size: clamp(4rem, 11vw, 8rem);
+    line-height: 0.9;
+    font-weight: 900;
+}
+
+/* =========================================================
+   SHINE EFFECT
+========================================================= */
+
+.shiny {
+    position: relative;
+    display: inline-block;
+
+    background-image: linear-gradient(
+        110deg,
+        #000000 0%,
+        #932020 35%,
+        #226dbd 50%,
+        #932020 65%,
+        #000000 100%
+    );
+
+    background-size: 200% auto;
+    background-position: 150% center;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: shine 2.5s linear infinite;
+}
+
+.shiny:hover {
+    animation-play-state: paused;
+}
+
+@keyframes shine {
+    from { background-position: 150% center; }
+    to   { background-position: -50% center; }
+}
+
+/* =========================================================
+   SUBTEXT
+========================================================= */
+
+.hero-sub-text {
+    max-width: 820px;
+    margin: 6px auto 0;
+
+    text-align: center;
+
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.65;
+    color: #2b1c10;
+}
+
+.hero-quote {
+    display: block;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.hero-description {
+    display: block;
+    opacity: 1;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.hero-cta-group {
+    display: flex;
+    gap: 28px;
+    margin-top: 46px;
+}
+
+/* button unchanged */
+.btn-primary-large {
+    background-color: #e76e69;
+    color: #ffffff;
+
+    padding: 18px 42px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    border: 2px solid #E2DDB4;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-large:hover {
+    background: transparent;
+    border-color: #6F1A07;
+    color: #6F1A07;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-main-title,
+    .revenue-highlight,
+    .hero-sub-text {
+        text-align: center;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        width: 100%;
+    }
+
+    .btn-primary-large {
+        width: 100%;
+        max-width: 320px;
+    }
+}
