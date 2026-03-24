@@ -1,12 +1,9 @@
 ---
-// 1. Astro handles these. It will automatically put them in the <head> 
-// with the correct GitHub Pages /HAF-Astro/ prefix.
+
 import '../css/styles.css'; 
 import '../css/marquee.css';
 import '../css/blog/blogs-template/blog.css';
 import '../css/blog/blog-lp.css';
-
-// 2. Keep this for your favicon and external links
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -19,10 +16,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <!-- Stylesheets -->
-     <link rel="stylesheet" href="/css/styles.css">
-     <link rel="stylesheet" href="/css/blog/blogs-lp.css">
-     <link rel="stylesheet" href="../css/blogs.css">
      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
     <title>Hustle and Flow</title>
