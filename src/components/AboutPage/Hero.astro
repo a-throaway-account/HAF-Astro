@@ -1,3 +1,7 @@
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
 <section class="hero">
   <div class="grainient-bg" id="grainient"></div>
 
@@ -11,4 +15,4 @@
   </div>
 </section>
 <script src="https://unpkg.com/ogl@0.0.32/dist/ogl.umd.js"></script>
-<script src="/about/grainient.js" is:inline></script>
+<script src={`${baseUrl}/about/grainient.js`} is:inline></script>
