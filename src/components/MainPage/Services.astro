@@ -166,20 +166,19 @@
 </section>
 
 
-<style>
-  .services-track {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+<script is:inline>
+  
+  const track = document.getElementById('servicesGrid');
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+
+  if (track && nextBtn && prevBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -350, behavior: 'smooth' });
+    });
   }
-  .services-track::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
-  .service-card {
-    min-width: 300px; /* Adjust based on your design */
-    flex-shrink: 0;
-  }
-</style>
+</script>
