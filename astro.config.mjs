@@ -2,5 +2,4 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({site: 'https://a-throaway-account.github.io',
-  base: '/HAF-Astro',});
+export default defineConfig({base: '/HAF-Astro',});
