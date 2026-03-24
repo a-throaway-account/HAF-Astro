@@ -1,3 +1,14 @@
+---
+// 1. Astro handles these. It will automatically put them in the <head> 
+// with the correct GitHub Pages /HAF-Astro/ prefix.
+import '../css/styles.css'; 
+import '../css/marquee.css';
+
+// 2. Keep this for your favicon and external links
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +18,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 
 	<link rel="canonical" href="https://hustleandflow.in/" />
-	<link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/marquee.css">
     <link  href="https://assets.calendly.com/assets/external/widget.css"
   rel="stylesheet"/>
   <link rel="stylesheet" href="/css/blog/blogs-template/blog.css">
