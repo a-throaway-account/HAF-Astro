@@ -109,18 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // PHILOSOPHY CARD
-    (() => {
-        const philBtn = document.getElementById("flipBtn");
-        const philCard = document.getElementById("philosophyCard");
 
-        if (!philBtn || !philCard) return;
-
-        philBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            philCard.classList.toggle("flipped");
-        });
-    })();
 
 }); 
