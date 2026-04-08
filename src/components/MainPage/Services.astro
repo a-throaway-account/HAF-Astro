@@ -17,7 +17,7 @@
     <div class="services-slider">
 
       <!-- LEFT ARROW -->
-      <button class="slider-arrow prev"
+      <button class="slider-arrow prev" id="prevBtn"
         onclick="moveServices('left')">
         <svg width="20" height="20" viewBox="0 0 24 24"
           fill="none" stroke="currentColor"
@@ -28,7 +28,7 @@
       </button>
 
       <!-- RIGHT ARROW -->
-      <button class="slider-arrow next"
+      <button class="slider-arrow next" id="nextBtn"
         onclick="moveServices('right')">
         <svg width="20" height="20" viewBox="0 0 24 24"
           fill="none" stroke="currentColor"
@@ -42,18 +42,11 @@
       <div class="services-track" id="servicesGrid">
 
         <!-- CARD -->
-        <div class="service-card">
-  <div class="service-icon-row">
-    <div class="service-icon">01</div>
-    <img src="logos/vids/amazon-animation.gif" class="service-gif" />
-  </div>
-  <h5>Amazon <span class="accent-text">Ads</span></h5>
-  <p>Launch and scale your D2C brand on India’s leading marketplace.</p>
-</div>
+
 
 <div class="service-card">
   <div class="service-icon-row">
-    <div class="service-icon">02</div>
+    <div class="service-icon">01</div>
     <img src="logos/services/meta.png" class="service-gif" />
   </div>
   <h5>Meta <span class="accent-text">Ads</span></h5>
@@ -62,7 +55,7 @@
 
 <div class="service-card">
   <div class="service-icon-row">
-    <div class="service-icon">03</div>
+    <div class="service-icon">02</div>
     <img src="logos/services/ga.jpg" class="service-gif" />
   </div>
   <h5>Google <span class="accent-text">Ads</span></h5>
@@ -71,11 +64,19 @@
 
 <div class="service-card">
   <div class="service-icon-row">
-    <div class="service-icon">04</div>
+    <div class="service-icon">03</div>
     <img src="logos/services/seo.jpg" class="service-gif" />
   </div>
   <h5>SEO <span class="accent-text">Optimization</span></h5>
   <p>Long-term organic growth powered by technical, on-page, and content SEO.</p>
+</div>
+        <div class="service-card">
+  <div class="service-icon-row">
+    <div class="service-icon">04</div>
+    <img src="logos/vids/amazon-animation.gif" class="service-gif" />
+  </div>
+  <h5>Amazon <span class="accent-text">Ads</span></h5>
+  <p>Launch and scale your D2C brand on India’s leading marketplace.</p>
 </div>
 
 <div class="service-card">
@@ -167,18 +168,63 @@
 
 
 <script is:inline>
-  
-  const track = document.getElementById('servicesGrid');
-  const nextBtn = document.getElementById('nextBtn');
-  const prevBtn = document.getElementById('prevBtn');
+  document.addEventListener('DOMContentLoaded', () => {
+    let serviceIndex = 0;
+    let isMoving = false;
 
-  if (track && nextBtn && prevBtn) {
-    nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: 350, behavior: 'smooth' });
-    });
+    const track = document.getElementById("servicesGrid");
+    if (!track) return;
 
-    prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -350, behavior: 'smooth' });
-    });
-  }
+    const cards = Array.from(track.children);
+    if (cards.length === 0) return;
+
+    // 1. Clone cards for infinite effect
+    cards.forEach(card => track.appendChild(card.cloneNode(true)));
+    cards.slice().reverse().forEach(card => track.prepend(card.cloneNode(true)));
+
+    const totalCards = track.children.length;
+    const realCardCount = cards.length;
+    
+    // Calculate width including the gap/margin (adjust 30 to match your CSS gap)
+    const cardWidth = cards[0].offsetWidth + 30;
+
+    // 2. Set initial position to the "real" first card
+    serviceIndex = realCardCount;
+    track.style.transition = "none";
+    track.style.transform = `translateX(-${serviceIndex * cardWidth}px)`;
+
+    // 3. Attach function to window so the onclick="moveServices()" can find it
+    window.moveServices = (direction) => {
+      if (isMoving) return;
+      isMoving = true;
+
+      if (direction === "right") {
+        serviceIndex++;
+      } else {
+        serviceIndex--;
+      }
+
+      track.style.transition = "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)";
+      track.style.transform = `translateX(-${serviceIndex * cardWidth}px)`;
+
+      // 4. Teleport Logic (The "Infinite" Snap)
+      setTimeout(() => {
+        track.style.transition = "none";
+
+        // If we reach the end of the clones on the right
+        if (serviceIndex >= realCardCount * 2) {
+          serviceIndex = realCardCount;
+          track.style.transform = `translateX(-${serviceIndex * cardWidth}px)`;
+        }
+
+        // If we reach the clones on the left
+        if (serviceIndex <= 0) {
+          serviceIndex = realCardCount;
+          track.style.transform = `translateX(-${serviceIndex * cardWidth}px)`;
+        }
+        
+        isMoving = false;
+      }, 460);
+    };
+  });
 </script>

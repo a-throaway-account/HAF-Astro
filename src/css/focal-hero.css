@@ -83,55 +83,53 @@
    SPINNING O
 ========================================================= */
 
+
 .spinning-o-container {
     position: relative;
-    width: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1em; /* Slightly wider than the letter to breathe */
     height: 1em;
-    display: inline-block;
     vertical-align: middle;
-    isolation: isolate;
+}
+
+.o-border {
+    /* This keeps the main 'O' visible but allows the orbit */
+    opacity: 0; 
 }
 
 .circular-text-wrap {
     position: absolute;
     inset: 0;
-    transform: translate(0, 0);
-    animation: rotate-o 20s linear infinite;
-    z-index: 2;
+    animation: rotate-o 10s linear infinite;
 }
 
-.o-border{
-    color: transparent;
-}
-
-.hero-main-title:hover .circular-text-wrap {
-    animation-duration: 5s;
+/* Speed up on hover */
+.revenue-highlight:hover .circular-text-wrap {
+    animation-duration: 3s;
 }
 
 .circular-text-wrap span {
     position: absolute;
-    left: 50%;
     top: 0;
-    height: 50%;
-    width: 20px;
-    margin-left: -10px;
-    font-size: 0.12em;
+    left: 50%;
+    height: 100%; /* Spans the full height of the container */
+    width: 10px;
+    margin-left: -5px;
+    
+    font-size: 0.15em; /* Scale the tiny text relative to the parent */
     font-weight: 900;
-    text-transform: uppercase;
-    text-align: center;
-
-    transform-origin: bottom center;
+    
+    /* Rotate around the center of the container */
+    transform-origin: center; 
     transform: rotate(calc(var(--i) * (360deg / 13)));
-}
-.circular-text-wrap span:last-child {
-    margin-right: 0;
 }
 
 @keyframes rotate-o {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
-
 /* =========================================================
    REVENUE LINE
 ========================================================= */
@@ -143,7 +141,7 @@
 
     text-align: center;
 
-    font-size: clamp(4rem, 11vw, 8rem);
+    font-size: clamp(9rem, 11vw, 8rem);
     line-height: 0.9;
     font-weight: 900;
 }

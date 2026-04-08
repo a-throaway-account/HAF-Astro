@@ -94,14 +94,16 @@ img { max-width: 100%; height: auto; display: flex; }
 /* --- DARK STATIC NAVBAR --- */
 .main-nav {
     width: 100%;
-    padding: 30px 0;
+    height: 100px; /* Set your desired fixed height here */
+    padding: 0;    /* Remove vertical padding to maintain the exact height */
     background-color: #fff;
     position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-
-  transition: background-color 0.3s ease, padding 0.3s ease;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    
+    /* Keep your existing transitions */
+    transition: background-color 0.3s ease, height 0.3s ease; 
 }
 /* Updated Scrolled State */
 /* Scrolled State: Solid White, No Blur */
@@ -112,7 +114,7 @@ img { max-width: 100%; height: auto; display: flex; }
 
 .nav-container {
     width: 100%;
-    padding: 0px 24px;
+    padding: 11px 50px;
 
     display: flex;
     justify-content: space-between;
@@ -126,7 +128,7 @@ img { max-width: 100%; height: auto; display: flex; }
 }
 
 .nav-logo img {
-    height: 20px;
+    height: 80px;
     width: auto;
     /*filter: brightness(0) invert(1); */
     transition: all 0.3s ease;

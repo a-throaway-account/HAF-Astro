@@ -13,7 +13,7 @@
         <div class="blog-track" id="blogTrack">
             
             <article class="blog-card">
-                <a href="blogs/stop-setting-fire-to-you-own-budget.html" class="card-link-wrapper"><div class="card-content">
+                <a href="blogs/stop-setting-fire-to-your-own-budget" class="card-link-wrapper"><div class="card-content">
                     <span class="blog-category">Media Buying</span>
                     <h2 class="blog-title">Media Buying Tracking Infrastructure</h2>
                     <p class="blog-excerpt">How to Stop Setting Fire to Your Own Budget...</p>
@@ -22,7 +22,7 @@
             </article>
 
             <article class="blog-card">
-                <a href="/blogs"  class="card-link-wrapper">
+                <a href="/"  class="card-link-wrapper">
                   <div class="card-content">
                     <span class="blog-category">Design</span>
                     <h2 class="blog-title">Why Minimalism Still Wins</h2>
@@ -31,7 +31,7 @@
             </article>
 
             <article class="blog-card">
-                <a href="/blogs"  class="card-link-wrapper"><div class="card-content">
+                <a href="/"  class="card-link-wrapper"><div class="card-content">
                     <span class="blog-category">Strategy</span>
                     <h2 class="blog-title">Scaling Your Brand Globally</h2>
                     <p class="blog-excerpt">How to take a local hero brand and introduce it to international markets effectively...</p>
@@ -39,7 +39,7 @@
             </article>
 
             <article class="blog-card">
-                <a href="/blogs"  class="card-link-wrapper"><div class="card-content">
+                <a href="/"  class="card-link-wrapper"><div class="card-content">
                     <span class="blog-category">Tech</span>
                     <h2 class="blog-title">Performance Optimization Tips</h2>
                     <p class="blog-excerpt">Everything you need to know about page speed and its direct impact on your ROI...</p>
@@ -58,7 +58,56 @@
         </div>
     </div>
 </section>
+<style>
+  #blogTrack {
+  display: flex;
+  overflow-x: auto; /* Required for scrollBy to work */
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* Hide scrollbar IE/Edge */
+  scrollbar-width: none;     /* Hide scrollbar Firefox */
+}
 
+#blogTrack::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari/Webkit */
+}
+
+.blog-card {
+  flex: 0 0 auto; /* Prevents cards from shrinking */
+  width: 380px;   /* Example width */
+  margin-right: 20px; /* Example gap */
+}
+</style>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const blogTrack = document.getElementById('blogTrack');
+    const blogPrev = document.querySelector('.blog-prev');
+    const blogNext = document.querySelector('.blog-next');
+
+    if (blogTrack && blogPrev && blogNext) {
+      const scrollAmount = 400; 
+
+      blogNext.addEventListener('click', () => {
+        blogTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      blogPrev.addEventListener('click', () => {
+        blogTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      // Optional: Check scroll position to hide/show arrows
+      blogTrack.addEventListener('scroll', () => {
+        const isAtStart = blogTrack.scrollLeft === 0;
+        const isAtEnd = blogTrack.scrollLeft + blogTrack.offsetWidth >= blogTrack.scrollWidth - 10;
+        
+        blogPrev.style.opacity = isAtStart ? "0.3" : "1";
+        blogPrev.style.pointerEvents = isAtStart ? "none" : "auto";
+        
+        blogNext.style.opacity = isAtEnd ? "0.3" : "1";
+        blogNext.style.pointerEvents = isAtEnd ? "none" : "auto";
+      });
+    }
+  });
+</script>
 <!--Contact Us Form-->
 				<section class="contact-section" id="contact-us">
     <div class="container">
@@ -112,3 +161,4 @@
         </div>
     </div>
 </section>
+

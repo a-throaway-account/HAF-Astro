@@ -112,7 +112,7 @@ img { max-width: 100%; height: auto; display: flex; }
 
 .nav-container {
     width: 100%;
-    padding: 0px 24px;
+    padding: 0px 90px;
 
     display: flex;
     justify-content: space-between;
@@ -126,8 +126,8 @@ img { max-width: 100%; height: auto; display: flex; }
 }
 
 .nav-logo img {
-    height: 20px;
-    width: auto;
+    height: 200px;
+    width: 500%;
     /*filter: brightness(0) invert(1); */
     transition: all 0.3s ease;
 }
